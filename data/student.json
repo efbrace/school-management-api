@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1",
+    "name": "Bobby Lee",
+    "age": 58,
+    "grade": 5
+  },
+  {
+    "id": "2",
+    "name": "Susan Carter",
+    "age": 62,
+    "grade": 6
+  },
+  {
+    "id": "3",
+    "name": "Derek Johnson",
+    "age": 54,
+    "grade": 4
+  },
+  {
+    "name": "Linda Nguyen",
+    "age": 60,
+    "grade": 5
+  },
+  {
+    "name": "Marcus Hill",
+    "age": 57,
+    "grade": 6
+  },
+  {
+    "name": "Angela Brooks",
+    "age": 59,
+    "grade": 5
+  },
+  {
+    "id": "82f6eb12-e21f-4d5a-84b4-a8163134397e",
+    "name": "Baba Powers",
+    "age": 25,
+    "grade": 4
+  }
+]
