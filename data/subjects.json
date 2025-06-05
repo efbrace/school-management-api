@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Mathematics",
+    "teacher": "Mr. Thompson",
+    "credits": 4
+  },
+  {
+    "name": "English",
+    "teacher": "Ms. Rivera",
+    "credits": 3
+  },
+  {
+    "name": "Science",
+    "teacher": "Dr. Ahmed",
+    "credits": 4
+  },
+  {
+    "name": "History",
+    "teacher": "Mrs. Chen",
+    "credits": 2
+  },
+  {
+    "id": "c1b3c351-71c7-444c-acb5-3d6030347285",
+    "name": "R.M.E",
+    "teacher": "Jessica",
+    "credits": 3
+  }
+]

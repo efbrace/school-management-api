@@ -1,11 +1,13 @@
 const { Router } = require("express");
 const router = Router();
 const { readFile, writeFile } = require("../utils/fileHandler");
+const { v4: uuid4 } = require("uuid");
 
+// GETING ALL TEACHERS
 router.get("/teachers", async (req, res) => {
   try {
     const teachersData = await readFile("teachers.json");
-    res.json(teachersData);
+    res.status(200).json(teachersData);
   } catch (error) {
     console.error(error);
   }
@@ -18,7 +20,7 @@ router.get("/teachers/:id", async (req, res) => {
   const matchTeacher = teachers.find((teach) => {
     return teach.id === id;
   });
-  res.json(matchTeacher);
+  res.status(200).json(matchTeacher);
 });
 
 // ADD A SINGLE TEACHER
@@ -28,7 +30,7 @@ router.post("/teachers", async (req, res) => {
 
   //   VALIDATION
   if (!name || !age || !subject) {
-    res.json({
+    res.status(400).json({
       message: "All fields are required!",
     });
     return;
@@ -42,7 +44,7 @@ router.post("/teachers", async (req, res) => {
 
   teachers.push(newTeacher);
   writeFile("teachers.json", teachers);
-  res.json(newTeacher);
+  res.status(201).json(newTeacher);
 });
 
 // UPDATE A SINGLE TEACHER
@@ -56,7 +58,7 @@ router.put("/teachers/:id", async (req, res) => {
   });
 
   if (teacherIndex === -1) {
-    res.json({ message: "Teacher not Found" });
+    res.status(204).json({ message: "Teacher not Found" });
     return;
   }
 
@@ -68,7 +70,7 @@ router.put("/teachers/:id", async (req, res) => {
   };
 
   writeFile("teachers.json", teachers);
-  res.json(teachers[teacherIndex]);
+  res.status(201).json(teachers[teacherIndex]);
 });
 
 // DELETING A TEACHER
@@ -81,7 +83,7 @@ router.delete("/teachers/:id", async (req, res) => {
   });
 
   if (!matchTeacher) {
-    res.json({
+    res.status(204).json({
       message: "Teacher not found!",
     });
     return;
@@ -92,7 +94,7 @@ router.delete("/teachers/:id", async (req, res) => {
   });
   writeFile("teachers.json", newTeachers);
 
-  res.json({
+  res.status(204).json({
     message: "Teacher Deleted succesfully!",
     matchTeacher,
   });

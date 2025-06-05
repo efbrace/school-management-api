@@ -6,7 +6,7 @@ const { v4: uuid4 } = require("uuid");
 // GETING ALL STUDENTS
 router.get("/students", async (req, res) => {
   const studentData = await readFile("students.json");
-  res.json(studentData);
+  res.status(200).json(studentData);
 });
 
 // GETTING A SINGLE STUDENT
@@ -16,7 +16,7 @@ router.get("/students/:id", async (req, res) => {
   const matchStudent = students.find((stud) => {
     return stud.id === id;
   });
-  res.json(matchStudent);
+  res.status(200).json(matchStudent);
 });
 
 // ADD A SINGLE STUDENT
@@ -26,7 +26,7 @@ router.post("/students", async (req, res) => {
 
   //   VALIDATION
   if (!name || !age || !grade) {
-    res.json({
+    res.status(400).json({
       message: "All fields are required!",
     });
     return;
@@ -40,7 +40,7 @@ router.post("/students", async (req, res) => {
 
   students.push(newStudent);
   writeFile("students.json", students);
-  res.json(newStudent);
+  res.status(201).json(newStudent);
 });
 
 // UPDATE A SINGLE STUDENT
@@ -54,7 +54,7 @@ router.put("/students/:id", async (req, res) => {
   });
 
   if (studentIndex === -1) {
-    res.json({ message: "Student not Found" });
+    res.status(204).json({ message: "Student not Found" });
     return;
   }
 
@@ -66,7 +66,7 @@ router.put("/students/:id", async (req, res) => {
   };
 
   writeFile("students.json", students);
-  res.json(students[studentIndex]);
+  res.status(201).json(students[studentIndex]);
 });
 
 // DELETING A STUDENT
@@ -79,7 +79,7 @@ router.delete("/students/:id", async (req, res) => {
   });
 
   if (!matchStudent) {
-    res.json({
+    res.status(204).json({
       message: "Student not found!",
     });
     return;
@@ -90,7 +90,7 @@ router.delete("/students/:id", async (req, res) => {
   });
 
   writeFile("students.json", newStudents);
-  res.json({
+  res.status(204).json({
     message: "Student Deleted succesfully!",
     matchStudent,
   });

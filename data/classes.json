@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Class A",
+    "numberOfStudents": 25,
+    "subject": "Mathematics"
+  },
+  {
+    "name": "Class B",
+    "numberOfStudents": 30,
+    "subject": "English"
+  },
+  {
+    "name": "Class C",
+    "numberOfStudents": 28,
+    "subject": "Science"
+  },
+  {
+    "name": "Class D",
+    "numberOfStudents": 22,
+    "subject": "History"
+  },
+  {
+    "id": "f3907abf-6f3a-4345-b4fc-30b72aa884d0",
+    "name": "K",
+    "numberOfStudents": 30,
+    "subject": "R.M.E"
+  }
+]
