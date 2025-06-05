@@ -1,8 +1,8 @@
 const fs = require("fs/promises");
 const path = require("path");
 
-// const studentPath = path.join(__dirname, "students.json");
-// const teacherPath = path.join(__dirname, "teachers.json");
+const studentPath = path.join(__dirname, "students.json");
+const teacherPath = path.join(__dirname, "teachers.json");
 
 const getFilePath = (filename) => {
   return path.join(__dirname, "../data", filename);
