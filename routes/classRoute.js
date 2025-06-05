@@ -9,6 +9,16 @@ router.get("/classes", async (req, res) => {
   res.status(200).json(classData);
 });
 
+// GETTING A SINGLE CLASS
+router.get("/classes/:id", async (req, res) => {
+  const id = req.params.id;
+  const classes = await readFile("classes.json");
+  const matchClass = classes.find((teach) => {
+    return teach.id === id;
+  });
+  res.status(200).json(matchClass);
+});
+
 // ADD A SINGLE CLASS
 router.post("/classes", async (req, res) => {
   const { name, numberOfStudents, subject } = req.body;
@@ -40,7 +50,8 @@ router.put("/classes/:id", async (req, res) => {
   const { name, numberOfStudents, subject } = req.body;
   const classes = await readFile("classes.json");
   const classIndex = classes.findIndex((clas) => {
-    return clas.id === id;});
+    return clas.id === id;
+  });
 
   if (classIndex === -1) {
     res.status(204).json({ message: "Class not Found" });
@@ -50,7 +61,9 @@ router.put("/classes/:id", async (req, res) => {
   classes[classIndex] = {
     id: classes[classIndex].id,
     name: !name ? classes[classIndex].name : name,
-    numberOfStudents: !numberOfStudents ? [classIndex].numberOfStudents : numberOfStudents,
+    numberOfStudents: !numberOfStudents
+      ? [classIndex].numberOfStudents
+      : numberOfStudents,
     subject: !subject ? classes[classIndex].subject : subject,
   };
 

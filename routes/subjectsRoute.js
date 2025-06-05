@@ -9,9 +9,19 @@ router.get("/subjects", async (req, res) => {
   res.status(200).json(subjectData);
 });
 
+// GETTING A SINGLE SUBJECT
+router.get("/subjects/:id", async (req, res) => {
+  const id = req.params.id;
+  const subjects = await readFile("subjects.json");
+  const matchSubjects = subjects.find((teach) => {
+    return teach.id === id;
+  });
+  res.status(200).json(matchSubjects);
+});
+
 // ADD A SINGLE SUBJECT
 router.post("/subjects", async (req, res) => {
-  const { name, teacher, credits} = req.body;
+  const { name, teacher, credits } = req.body;
   const subjects = await readFile("subjects.json");
 
   //   VALIDATION
@@ -40,7 +50,8 @@ router.put("/subjects/:id", async (req, res) => {
   const { name, teacher, credits } = req.body;
   const subjects = await readFile("subjects.json");
   const subjectIndex = subjects.findIndex((sub) => {
-    return sub.id === id;});
+    return sub.id === id;
+  });
 
   if (subjectIndex === -1) {
     res.status(204).json({ message: "Subject not Found" });
